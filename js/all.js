@@ -2609,7 +2609,7 @@ var el =document.querySelector('.list');
 
 
 for(var i = 0;8>=i; i++){
-   var content =
+   var content ='<img src="data[i].Picture1">'+
    '<p>'+'<img src="img/icons_clock.png">'+data[i].Opentime+'</p>'+
    '<p>'+'<img src="img/icons_pin.png">'+data[i].Add+'</p>'+
    '<p>'+'<img src="img/icons_phone.png">'+data[i].Tel+'</p>';
