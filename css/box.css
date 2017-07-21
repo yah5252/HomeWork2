@@ -1,0 +1,122 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+.wrap{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header{
+    height: 500px;
+    border: 1px solid blue;
+}
+
+.header{
+    background-image: url(../img/Hero.png);
+    height: 400px;
+    width: 1000px;
+    
+}
+
+
+.header h1{
+    font-family:PingFangTC-Regular;
+    font-size: 40px;
+    color: #FFFFFF;
+    letter-spacing: 3.89px;
+    text-align: center;
+    padding-top: 80px;
+    
+}
+
+.text{
+    margin-top: 110px;
+    margin-left: 330px;
+    width: 370px;
+    height: 30px;
+    background: rgba(255,255,255,0.70);
+    border: 3px solid #FFFFFF;
+    border-radius: 3px;
+}
+
+.box{
+    background:white;
+    position: absolute;
+    bottom: 175px;
+    left: 285px;
+    right: 50px;
+    z-index: 10;
+    height: 100px;
+    width: 800px;
+}
+
+.content{
+    height: 500px;
+    border: 1px solid red;
+}
+
+.countryName{
+  margin: 0 auto;
+  margin-top: 76px;
+  text-align: center;
+  font-family: SFNSDisplay;
+font-size: 36px;
+color: #8A82CC;
+}
+
+.list li{
+  border: 1px solid red;
+  margin: 0 auto;
+  margin-top:24px;
+  overflow: auto;
+  width: 960px;
+}
+
+.footer{
+    height: 100px;
+    background: #559AC8;
+}
