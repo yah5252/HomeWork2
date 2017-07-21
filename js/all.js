@@ -2606,7 +2606,7 @@ var str = '';
 
 var el =document.querySelector('.list');
 
-el.setAttribute('ul','li');
+
 
 for(var i = 0;8>=i; i++){
    var content =
@@ -2616,7 +2616,7 @@ for(var i = 0;8>=i; i++){
   
    str += content;
   
-   console.log(str);
+  
 }
 
 el.innerHTML = str;
