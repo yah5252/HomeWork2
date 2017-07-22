@@ -2605,18 +2605,35 @@ var len = data.length;
 var str = '';
 
 var el =document.querySelector('.list');
+var area =document.getElementById('areaId');
 
-
-
-for(var i = 0;8>=i; i++){
-   var content ='<img src="data[i].Picture1">'+
+for(var i = 0;8>i; i++){
+   var content ='<li>'+'<img src="data[i].Picture1">'+
    '<p>'+'<img src="img/icons_clock.png">'+data[i].Opentime+'</p>'+
    '<p>'+'<img src="img/icons_pin.png">'+data[i].Add+'</p>'+
-   '<p>'+'<img src="img/icons_phone.png">'+data[i].Tel+'</p>';
+  '<p>'+'<img src="img/icons_phone.png">'+data[i].Tel+'</p>'+'</li>';
   
    str += content;
   
-  
+ 
 }
 
 el.innerHTML = str;
+
+var arlen = data.length;
+   function updatalist(e){
+       var select = e.target.value;
+       var sel ='';
+       for(var i = 0; arlen>0; i++){
+          if(select == data[i].Zone){
+              sel += '<li>'+'<img src="data[i].Picture1">'+
+   '<p>'+'<img src="img/icons_clock.png">'+data[i].Opentime+'</p>'+
+   '<p>'+'<img src="img/icons_pin.png">'+data[i].Add+'</p>'+
+   '<p>'+'<img src="img/icons_phone.png">'+data[i].Tel+'</p>'+'</li>';
+          }
+       }
+    el.innerHTML =sel;   
+}
+
+
+area.addEventListener('change',updatalist,false);
