@@ -178,6 +178,11 @@ color: #8A82CC;
 
 }
 
+.list img{
+   width:50%;
+   height:50%;
+}
+
 .footer{
     height: 100px;
     background: #559AC8;
