@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<meta name="author" content="joys" />
+	  
+		  <script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
+	  <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+	  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+      <script src="js/jquery-3.2.1.slim.min.js"></script>
+			<style type="text/css">
+	
+			</style>
+			<script type= "text/babel">
+         class TodoItems extends React.Component{
+            constructor(props){
+                    super(props);
+            } 
+            render(){
+               var displayItems = this.props.items.map((items)=>{
+                      return(<li key={items.id}>{items.data}</li>);
+               });
+                return(
+                  <div>
+                    <ul>
+                      {displayItems}
+                    </ul>  
+                  </div>
+                );
+             }
+         };
+         
+         class AddTodoForm extends React.Component{
+             constructor(props){
+               super(props);
+               this.state={todoText:""}
+             }
+          
+             render(){
+              
+              return(
+                <div>我來增加TodoItems</div>
+              ); 
+            }
+         };
+
+         class TodoList extends React.Component{
+           render(){
+            var todoItems=[
+                {id:1,data:"Item 1"},
+                {id:2,data:"Item 2"}];
+              return(
+                <div className="todoList">
+                   <h1>我是一個TodoList容器</h1>
+                   <h2>我組合了TodoItems以及AddTodoForm兩個元件</h2>
+                   <TodoItems items={todoItems} />
+                   <AddTodoForm />
+                </div>
+              )
+           }
+         }
+
+				window.addEventListener("load",()=>{
+          let mytodoList=<TodoList/>;
+         
+         ReactDOM.render(<TodoList/>,document.body);
+				});
+
+				
+
+				
+			</script>
+	</head>
+	  <body>
+      <div id="content"></div>
+    </body>
+	
+	</html>
