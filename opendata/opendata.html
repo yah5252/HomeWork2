@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+	<meta name="author" content="joys" />
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+	<link rel="stylesheet" href="css/stytle.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+</head>
+
+<body>
+
+
+	<div class="header">
+		<h1>台北市颱風災害動態資訊</h1>
+	</div>
+	<div class="wrap">
+		<div class="telephone">
+
+		</div>
+		<div class="selectoption">
+			<div id="add">
+				<select name="" class="select" v-model="area">
+					<option value="全部">全部</option>
+					<option value="萬華區">萬華區</option>
+					<option value="中正區">中正區</option>
+					<option value="大同區">大同區</option>
+					<option value="中山區">中山區</option>
+					<option value="大安區">大安區</option>
+					<option value="南港區">南港區</option>
+					<option value="文山區">文山區</option>
+					<option value="松山區">松山區</option>
+					<option value="信義區">信義區</option>
+					<option value="士林區">士林區</option>
+					<option value="北投區">北投區</option>
+					<option value="內湖區">內湖區</option>
+				</select>
+			</div>
+		</div>
+		<div class="content">
+			<table class="table ">
+				<thead class="thead-secondary">
+					<tr>
+						<th style="width:18%" scope="col ">發生時間</th>
+						<th style="width:8%" scope="col">區域</th>
+						<th style="width:12%" scope="col">詳細位置</th>
+						<th style="width:62%" scope="col">描述</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td v-for='data in Disaster' v-if="filterArea(data)" scope="row">{{data.CaseTime}}</th>
+							<td class="d-block p-1  mt-2 bg-primary text-white">{{data.CaseLocationDistrict}}</td>
+							<td>{{data.CaseLocationDescription}}</td>
+							<td>{{data.CaseDescription}}</td>
+
+					</tr>
+		</div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	 crossorigin="anonymous"></script>
+</body>
+<script>
+	var apiURL = 'https://tcgbusfs.blob.core.windows.net/blobfs/GetDisasterSummary.json';
+
+
+	new Vue({
+		el: '#add',
+		data: {
+			area: '全部',
+			Disaster: null
+		},
+		created: function () {
+			//執行
+			this.fetchData()
+		},
+		methods: {
+			fetchData() {
+				var xhr = new XMLHttpRequest();
+				var self = this;
+				xhr.open('get', apiURL)
+				xhr.send(null);
+				xhr.onload = function () {
+					var str = JSON.parse(xhr.responseText);//接收資料並轉換格式
+					self.Disaster = str.DataSet['diffgr:diffgram'].NewDataSet.CASE_SUMMARY;//找到資料的節點
+					console.log(xhr);
+				}
+			},
+			filterArea(item) {
+				if (this.area == '全部') {
+					return true
+				} else if (item.CaseLocationDistrict == this.area) {
+					return true
+				}
+			}
+		},
+
+	});
+
+</script>
+
+</html>
